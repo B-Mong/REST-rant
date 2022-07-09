@@ -1,15 +1,24 @@
+// Imports dotenv so we can use env variables
 require('dotenv').config()
+// Imports express and initalizes it
 const express = require('express')
 const app = express()
+
+// Sets the view engine as jsx and react so it can be used to render the application
+app.set('view engine', 'jsx')
+app.engine('jsx', require('express-react-views').createEngine())
 
 app.use('/places', require('./controllers/places'))
 
 app.get('/', (req, res) => {
-    res.send('Hello')
+    res.render('home') // renders the home.jsx from the views folder. NOTE .render() will automatically look into a view folder for a home file
 })
 
+// routes all other unspecified routes to a 404 page that we control
 app.get('*', (req, res) => {
     res.send('<h1>404!</h1>')
 })
 
-app.listen(process.env.PORT)
+app.listen(process.env.PORT, ()=>{
+    console.log('Server is up!')
+})
