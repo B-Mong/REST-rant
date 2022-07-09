@@ -1,4 +1,12 @@
+const express = require('express');
 const router = require('express').Router();
+
+
+// New 
+router.get('/new', (req, res) => {
+    res.render('places/new')
+})
+
 // GET Places
 router.get('/', (req, res) => {
     let places = [{   // This is hard coded data intended for development purposes
@@ -16,5 +24,6 @@ router.get('/', (req, res) => {
     }]
     res.render('places/index', {places}) // Renders the index.jsx from the folder of view
 })
+
 
 module.exports = router
