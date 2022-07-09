@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 
 // routes all other unspecified routes to a 404 page that we control
 app.get('*', (req, res) => {
-    res.send('<h1>404!</h1>')
+    res.render('error404')
 })
 
 app.listen(process.env.PORT, ()=>{
