@@ -22,8 +22,15 @@ router.get('/', (req, res) => {
         cuisines: 'Coffee, Bakery',
         pic: '/images/coding-cat.jpg'
     }]
-    res.render('places/index', {places}) // Renders the index.jsx from the folder of view
+    res.render('places/index', { places }) // Renders the index.jsx from the folder of view
 })
+
+// Create
+router.post('/', (req, res) => {
+    console.log(req.body)
+    res.send('POST /places')
+})
+
 
 
 module.exports = router
