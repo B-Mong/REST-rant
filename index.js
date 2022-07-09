@@ -4,11 +4,13 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 
-// Sets the view engine as jsx and react so it can be used to render the application
+// Express Settings
+// Sets the view engine as jsx and react so it can be used to render the application, adds css
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
-
 app.use('/places', require('./controllers/places'))
+app.use(express.static('public'))
+
 
 app.get('/', (req, res) => {
     res.render('home') // renders the home.jsx from the views folder. NOTE .render() will automatically look into a view folder for a home file
