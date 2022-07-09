@@ -3,11 +3,40 @@ const React = require('react')
 const Default = require('../default')
 
 
-function new_form () {
+function new_form() {
     return (
         <Default>
             <main>
                 <h1>Add a new Restaurant</h1>
+                <form method="POST" action="/places">
+                    <div className="form-group">
+                        <label htmlFor="name">Restaurant Name</label>
+                        <br />
+                        <input className="form-control" type="text" id="name" name="name" required />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="pic">Restaurant Picture URL</label>
+                        <br />
+                        <input className="form-control" type="url" id="pic" name="pic" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="city">City Name</label>
+                        <br />
+                        <input className="form-control" type="text" id="city" name="city" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="state">State Abbreviation</label>
+                        <br />
+                        <input className="form-control" type="text" id="state" name="state" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="cuisines">Cuisine</label>
+                        <br />
+                        <input className="form-control" type="text" id="cuisines" name="cuisines" required />
+                    </div>
+                    <br />
+                    <input className="btn btn-primary" type="submit" value="Upload"/>
+                </form>
             </main>
         </Default>
     )
