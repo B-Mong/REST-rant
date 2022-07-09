@@ -1,3 +1,7 @@
+* {
+    font-family: 'Edu VIC WA NT Beginner', cursive;
+}
+
 body {
     background-color: antiquewhite;
 }
@@ -10,4 +14,18 @@ h1 {
 img {
     height: 600px;
     width: 600px;
+    
+}
+
+.home-button {
+    margin-top: 2em;
+    text-align: center
+}
+
+.home-description {
+    text-align: center
+}
+
+.home-image {
+    text-align: center
 }
