@@ -18,3 +18,15 @@ This application will be using these methods and paths to take the user to that 
 | DELETE | /places/:id/rant | Delete a rant comment about a place               |
 | GET    | *                | 404 page that matches any route not defined above |
 |        |                  |                                                   |
+
+
+Data keys will be as follow
+
+| Field | Data Type |
+| ----- | --------- |
+| name  | string    |
+| city  | string    |
+| state  | string    |
+| cuisine  | string    |
+| pic  | string (url)    |
+
