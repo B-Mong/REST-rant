@@ -12,27 +12,27 @@ function new_form() {
                     <div className="form-group">
                         <label htmlFor="name">Restaurant Name</label>
                         <br />
-                        <input className="form-control" type="text" id="name" name="name" required />
+                        <input className="form-control" id="name" name="name" required />
                     </div>
                     <div className="form-group">
                         <label htmlFor="pic">Restaurant Picture URL</label>
                         <br />
-                        <input className="form-control" type="url" id="pic" name="pic" />
+                        <input className="form-control" id="pic" name="pic" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="city">City Name</label>
                         <br />
-                        <input className="form-control" type="text" id="city" name="city" />
+                        <input className="form-control" id="city" name="city" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="state">State Abbreviation</label>
                         <br />
-                        <input className="form-control" type="text" id="state" name="state" />
+                        <input className="form-control" id="state" name="state" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="cuisines">Cuisine</label>
                         <br />
-                        <input className="form-control" type="text" id="cuisines" name="cuisines" required />
+                        <input className="form-control" id="cuisines" name="cuisines" required />
                     </div>
                     <br />
                     <input className="btn btn-primary" type="submit" value="Upload"/>
