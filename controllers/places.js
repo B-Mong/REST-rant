@@ -31,6 +31,20 @@ router.post('/', (req, res) => {
     res.redirect('/places')
 })
 
+// Show // GET // Specific page
+router.get('/:id', (req, res) => {
+    let id = Number(req.params.id) // Specifies that the id passed in the request is a number
+    if (isNaN(id)) { // If it is not a number, render the 404 page
+        res.render('error404')
+    }
+    else if (!places[id]) { // If the number is not a valid array index from our data, render a 404
+        res.render('error404')
+    }
+    else {
+        res.render('places/show', {place: places[id]}) // If it passes both conditionals, it is valid and should render the correct page.
+    }
+})
+
 
 
 module.exports = router

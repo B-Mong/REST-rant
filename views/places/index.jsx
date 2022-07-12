@@ -4,10 +4,14 @@ const Default = require('../default');
 
 function Index (data) {
     // Equates a variable to the html that we want displayed
-    let placesFormatted = data.places.map((place) =>{
+    let placesFormatted = data.places.map((place, index) =>{
         return (
                 <div className="col-sm-6">
-                    <h2 className="text-center">{place.name}</h2>
+                    <h2 className="text-center">
+                        <a href={`/places/${index}`}>
+                            {place.name}
+                        </a>
+                    </h2>
                     <p className="text-center">
                         {place.cuisines}
                     </p>
