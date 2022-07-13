@@ -2,7 +2,6 @@ const express = require('express');
 const router = require('express').Router();
 const places = require('../models/places.js');
 
-router.use(express.urlencoded({ extended: true }))
 
 // New 
 router.get('/new', (req, res) => {
@@ -31,7 +30,7 @@ router.post('/', (req, res) => {
     res.redirect('/places')
 })
 
-// Show // GET // Specific page
+// Show // GET // Specific place/restaurant page
 router.get('/:id', (req, res) => {
     let id = Number(req.params.id) // Specifies that the id passed in the request is a number
     if (isNaN(id)) { // If it is not a number, render the 404 page
@@ -41,9 +40,26 @@ router.get('/:id', (req, res) => {
         res.render('error404')
     }
     else {
-        res.render('places/show', {place: places[id]}) // If it passes both conditionals, it is valid and should render the correct page.
+        res.render('places/show', { place: places[id], id }) // If it passes both conditionals, it is valid and should render the correct page.
     }
 })
+
+//DELETE ROUTE
+router.delete('/:id', (req, res) => {
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+        res.render('error404')
+    }
+    else if (!places[id]) {
+        res.render('error404')
+    }
+    else {
+        places.splice(id, 1)
+        res.redirect(303, '/places')
+    }
+})
+
+
 
 
 

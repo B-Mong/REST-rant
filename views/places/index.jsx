@@ -1,4 +1,4 @@
-// Index page for places
+// Index page for places // Grid page of all the restaurants/places
 const React = require('react');
 const Default = require('../default');
 

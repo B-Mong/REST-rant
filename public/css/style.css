@@ -53,3 +53,13 @@ nav a:hover {
     color: pink;
     text-decoration: none;
 }
+
+.PlacePic {
+    width: 50%;
+}
+#PlaceInfo{
+    text-align: center
+}
+#CommentSection{
+    text-align: center
+}
