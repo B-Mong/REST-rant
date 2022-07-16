@@ -30,6 +30,20 @@ router.post('/', (req, res) => {
     res.redirect('/places')
 })
 
+// EDIT
+router.get('/:id/edit', (req, res) => {
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+        res.render('error404')
+    }
+    else if (!places[id]) {
+        res.render('error404')
+    }
+    else {
+        res.render('places/edit', { place: places[id] })
+    }
+})
+
 // Show // GET // Specific place/restaurant page
 router.get('/:id', (req, res) => {
     let id = Number(req.params.id) // Specifies that the id passed in the request is a number
