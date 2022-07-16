@@ -2,15 +2,15 @@
 
 const React = require('react');
 
-function Default (html) {
+function Default(html) {
     return (
         <html>
             <head>
                 <title>Title</title>
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"/>
-                <link rel="preconnect" href="https://fonts.googleapis.com"/>
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-                <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner&family=Press+Start+2P&display=swap" rel="stylesheet"/> 
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+                <link href="https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner&family=Press+Start+2P&display=swap" rel="stylesheet" />
                 <link rel="stylesheet" href="/css/style.css" />
             </head>
             <body>

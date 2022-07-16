@@ -4,6 +4,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const methodOverride = require('method-override')
+const cors = require('cors')
 
 // Express Settings
 // Sets the view engine as jsx and react so it can be used to render the application, adds css
@@ -12,14 +13,16 @@ app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
+// Allows us to override methods when making http requests
 app.use(methodOverride('_method'))
+app.use(cors())
 
 app.use('/places', require('./controllers/places'))
 app.use(express.static('public'))
 // Converts strings into objects
 app.use(express.urlencoded({ extended: true }))
-// Allows us to override methods when making http requests
-app.use(methodOverride('_method'))
+
+
 
 
 app.get('/', (req, res) => {

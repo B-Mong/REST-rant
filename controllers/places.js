@@ -2,7 +2,6 @@ const express = require('express');
 const router = require('express').Router();
 const places = require('../models/places.js');
 
-
 // New 
 router.get('/new', (req, res) => {
     res.render('places/new')
@@ -40,7 +39,10 @@ router.get('/:id/edit', (req, res) => {
         res.render('error404')
     }
     else {
-        res.render('places/edit', { place: places[id] })
+        res.render('places/edit', { 
+            place: places[id],
+            id: req.params.id
+        })
     }
 })
 
@@ -73,6 +75,21 @@ router.delete('/:id', (req, res) => {
     }
 })
 
+// EDIT UPDATE
+router.put('/:id', (req, res) => {
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+        res.render('error404')
+    }
+    else if (!places[id]) {
+        res.render('error404')
+    }
+    else {
+        // Save the new data into places[id]
+        places[req.params.id] = req.body
+        res.redirect(302, `/places/${req.params.id}`)
+    }
+})
 
 
 
