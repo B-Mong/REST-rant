@@ -1,6 +1,7 @@
 const express = require('express');
 const router = require('express').Router();
 const places = require('../models/places.js');
+const db = require('../models')
 
 // New 
 router.get('/new', (req, res) => {
@@ -9,24 +10,26 @@ router.get('/new', (req, res) => {
 
 // GET Places
 router.get('/', (req, res) => {
-    res.render('places/index.jsx', { places })
+    db.Place.find()
+        .then((places) => {
+            res.render('places/index', { places })
+        })
+        .catch(err => {
+            console.log(err)
+            res.render('error404')
+        })
 })
 
 // Create
 router.post('/', (req, res) => {
-    console.log(req.body)
-    if (!req.body.pic) {
-        // Default image if one is not provided
-        req.body.pic = 'http://placekitten.com/400/400'
-    }
-    if (!req.body.city) {
-        req.body.city = 'Anytown'
-    }
-    if (!req.body.state) {
-        req.body.state = 'USA'
-    }
-    places.push(req.body)
-    res.redirect('/places')
+    db.Place.create(req.body)
+        .then(() => {
+            res.redirect('/places')
+        })
+        .catch(err => {
+            console.log(err, err)
+            res.render('error404')
+        })
 })
 
 // EDIT
@@ -39,7 +42,7 @@ router.get('/:id/edit', (req, res) => {
         res.render('error404')
     }
     else {
-        res.render('places/edit', { 
+        res.render('places/edit', {
             place: places[id],
             id: req.params.id
         })
@@ -48,16 +51,14 @@ router.get('/:id/edit', (req, res) => {
 
 // Show // GET // Specific place/restaurant page
 router.get('/:id', (req, res) => {
-    let id = Number(req.params.id) // Specifies that the id passed in the request is a number
-    if (isNaN(id)) { // If it is not a number, render the 404 page
-        res.render('error404')
-    }
-    else if (!places[id]) { // If the number is not a valid array index from our data, render a 404
-        res.render('error404')
-    }
-    else {
-        res.render('places/show', { place: places[id], id }) // If it passes both conditionals, it is valid and should render the correct page.
-    }
+    db.Place.findById(req.params.id)
+        .then(place => {
+            res.render(`places/show`, { place })
+        })
+        .catch(err => {
+            console.log('err', err)
+            res.render('error404')
+        })
 })
 
 //DELETE ROUTE

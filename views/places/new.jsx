@@ -34,8 +34,12 @@ function new_form() {
                         <br />
                         <input className="form-control" id="cuisines" name="cuisines" required />
                     </div>
+                    <div className="form-group">
+                        <label for="founded">Founded Year</label>
+                        <input className="form-control" id="founded" name="founded" />
+                    </div>
                     <br />
-                    <input className="btn btn-primary" type="submit" value="Upload"/>
+                    <input className="btn btn-primary" type="submit" value="Upload" />
                 </form>
             </main>
         </Default>
