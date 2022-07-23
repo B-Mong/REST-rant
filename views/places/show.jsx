@@ -2,6 +2,25 @@ const React = require('react')
 const Default = require('../default')
 
 function show(data) {
+    let comments = ( // This is the default that happens if the array length is 0
+        <h3 className="inactive">
+            No comments yet!
+        </h3>
+    )
+    if (data.place.comments.length) { // If length > 0 then this executes and gets inserted in place of {comments}
+        comments = data.place.comments.map( c => {
+            return(
+                <div className="border">
+                    <h2 className="rant">{c.rant ? 'Rant!' : 'Rave!'}</h2>
+                    <h3>{c.content}</h3>
+                    <h3>{c.author}</h3>
+                    <h4>Rating: {c.stars}</h4>
+                </div>
+            )
+        })
+    }
+
+    // HTML page
     return (
         <Default>
             <main>
@@ -33,7 +52,7 @@ function show(data) {
                 </div>
                 <div className="comments mt-4" id="CommentSection">
                     <h1>Comments</h1>
-                    <p>No comments yet!</p>
+                    {comments}
                 </div>
             </main>
         </Default>

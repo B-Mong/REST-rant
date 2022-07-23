@@ -56,7 +56,9 @@ router.get('/:id/edit', (req, res) => {
 // Show // GET // Specific place/restaurant page
 router.get('/:id', (req, res) => {
     db.Place.findById(req.params.id)
+        .populate('comments')
         .then(place => {
+            console.log(place.comments)
             res.render(`places/show`, { place })
         })
         .catch(err => {
