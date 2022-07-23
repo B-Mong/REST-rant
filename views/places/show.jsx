@@ -17,7 +17,8 @@ function show(data) {
                             <h2>Ratings</h2>
                             <p>Not Rated</p>
                             <h2>Description</h2>
-                            <p>Located in {data.place.city}, {data.place.state}. This place serves {data.place.cuisines}</p>
+                            <h4>{data.place.showEstablished()}</h4> 
+                            <h4>This place serves {data.place.cuisines}</h4>
                             <a href={`/places/${data.id}/edit`} className="btn btn-warning">
                                 Edit
                             </a>
