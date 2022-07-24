@@ -8,6 +8,11 @@ router.get('/new', (req, res) => {
     res.render('places/new')
 })
 
+// New Comment
+router.get('/newComment', (req, res) => {
+    res.render('places/newComment')
+})
+
 // GET Places
 router.get('/', (req, res) => {
     db.Place.find()
@@ -58,7 +63,6 @@ router.get('/:id', (req, res) => {
     db.Place.findById(req.params.id)
         .populate('comments')
         .then(place => {
-            console.log(place.comments)
             res.render(`places/show`, { place })
         })
         .catch(err => {
