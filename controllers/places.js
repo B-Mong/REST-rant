@@ -40,19 +40,14 @@ router.post('/', (req, res) => {
 
 // EDIT
 router.get('/:id/edit', (req, res) => {
-    let id = Number(req.params.id)
-    if (isNaN(id)) {
-        res.render('error404')
-    }
-    else if (!places[id]) {
-        res.render('error404')
-    }
-    else {
-        res.render('places/edit', {
-            place: places[id],
-            id: req.params.id
+    db.Place.findById(req.params.id)
+        .then(place => {
+            res.render('places/edit', { place })
         })
-    }
+        .catch(err => {
+            console.log(err)
+            res.render('error404')
+        })
 })
 
 // Show // GET // Specific place/restaurant page
@@ -70,18 +65,16 @@ router.get('/:id', (req, res) => {
 
 //DELETE ROUTE
 router.delete('/:id', (req, res) => {
-    let id = Number(req.params.id)
-    if (isNaN(id)) {
-        res.render('error404')
-    }
-    else if (!places[id]) {
-        res.render('error404')
-    }
-    else {
-        places.splice(id, 1)
-        res.redirect(303, '/places')
-    }
+    db.Place.findByIdAndDelete(req.params.id)
+        .then(place => {
+            res.redirect('/places')
+        })
+        .catch(err => {
+            console.log('err', err)
+            res.render('error404')
+        })
 })
+
 
 // Upload Comment
 router.post('/:id/comment', (req, res) => {
