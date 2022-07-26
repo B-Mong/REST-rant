@@ -105,18 +105,14 @@ router.post('/:id/comment', (req, res) => {
 
 // EDIT UPDATE
 router.put('/:id', (req, res) => {
-    let id = Number(req.params.id)
-    if (isNaN(id)) {
+    db.Place.findByIdAndUpdate(req.params.id, req.body)
+    .then(() => {
+        res.redirect(`/places/${req.params.id}`)
+    })
+    .catch(err => {
+        console.log(err)
         res.render('error404')
-    }
-    else if (!places[id]) {
-        res.render('error404')
-    }
-    else {
-        // Save the new data into places[id]
-        places[req.params.id] = req.body
-        res.redirect(302, `/places/${req.params.id}`)
-    }
+    })
 })
 
 
